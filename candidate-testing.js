@@ -43,14 +43,15 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   // put questions in variables then put variables in array
 
-  for (let i = 0; i < correctAnswers.length; i++) {
-      cA1 = input.question(q1);
-      cA2 = input.question(q2); 
-      cA3 = input.question(q3); 
-      cA4 = input.question(q4); 
-      cA5 = input.question(q5); 
-      break; 
-  }
+//
+   
+  cA1 = input.question(q1);
+  cA2 = input.question(q2); 
+  cA3 = input.question(q3); 
+  cA4 = input.question(q4); 
+  cA5 = input.question(q5); 
+      
+  
 //candidateAnswer = input.question(question);
 }
 
@@ -58,21 +59,47 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
-console.log(`Hello ${candidateName}`)
-console.log(`For question 1, you answered ${cA1}. The correct answer is ${a1}`);
+  let score = 0;
 
-console.log(`For question 2, you answered ${cA2}. The correct answer is ${a2}`);
+  console.log(`Hello ${candidateName}`)
+  console.log(`For question 1, you answered ${cA1}. The correct answer is ${a1}`);
+  if (cA1 === a1) {
+    score += 1;
+  }
 
-console.log(`For question 3, you answered ${cA3}. The correct answer is ${a3}`);
+  console.log(`For question 2, you answered ${cA2}. The correct answer is ${a2}`);
+  if (cA2 === a2) {
+    score += 1;
+  }
 
-console.log(`For question 4, you answered ${cA4}. The correct answer is ${a4}`);
+  console.log(`For question 3, you answered ${cA3}. The correct answer is ${a3}`);
+  if (cA3 === a3) {
+    score += 1;
+  }
 
-console.log(`For question 5, you answered ${cA5}. The correct answer is ${a5}`);
+  console.log(`For question 4, you answered ${cA4}. The correct answer is ${a4}`);
+  if (cA4 === a4) {
+    score += 1;
+  }
 
-  let grade;
+  console.log(`For question 5, you answered ${cA5}. The correct answer is ${a5}`);
+  if (cA5 === a5) {
+    score += 1;
+  }
+
+  let grade = (score / 5) * 100;
+
+  if (grade >= 70){
+     console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<`);
+     console.log(`>>> Status: PASSED <<<`);
+  } else {
+     console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<`);
+     console.log(`>>> Status: FAILED <<<`);
+  }
   
-
-  return grade;
+  // console.log(score); // test
+  // console.log(`${candidateName}, you got a score of ${grade}%`); // test
+  return grade; // this never returns my grade?
 }
 
 function runProgram() {
