@@ -5,39 +5,107 @@ const input = require('readline-sync');
 // TODO 1.1a: Define candidateName // 
 let candidateName;
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question;
-let correctAnswer;
-let candidateAnswer;
-let questions;
-let correctAnswers;
-let candidateAnswers;
+// Put questions in variables, then in arrays
+let q1 = "Who was the first American woman in space? ";
+let q2 = "True or false: 5 kilometer == 5000 meters? ";
+let q3 = "(5 + 3)/2 * 10 = ? ";
+let q4 = "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ";
+let q5 = "What is the minimum crew size for the ISS? ";
+// Put answers in variables, then in array
+let a1 = "Sally Ride";
+let a2 = "true";
+let a3 = "40";
+let a4 = "Trajectory";
+let a5 = "3";
+// Same for candidate answers
+let cA1;
+let cA2;
+let cA3;
+let cA4;
+let cA5;
+//
+let question = "Who was the first woman in space? ";
+let correctAnswer = "Sally Ride";
+let candidateAnswer = [];
+let questions = [q1, q2, q3, q4, q5];
+let correctAnswers = [a1, a2, a3, a4, a5];
+let candidateAnswers = [cA1, cA2, cA3, cA4, cA5];
+
 
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
+  candidateName = input.question("What is your name? ");
 
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
+  // put questions in variables then put variables in array
 
-
+//
+   
+  cA1 = input.question(q1);
+  cA2 = input.question(q2); 
+  cA3 = input.question(q3); 
+  cA4 = input.question(q4); 
+  cA5 = input.question(q5); 
+      
+  
+//candidateAnswer = input.question(question);
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
+  let score = 0;
 
-  let grade;
+  console.log(`Hello ${candidateName}`)
+  console.log(`For question 1, you answered ${cA1}. The correct answer is ${a1}`);
+  if (cA1.toUpperCase() === a1.toUpperCase()) {
+    score += 1;
+  }
+
+  console.log(`For question 2, you answered ${cA2}. The correct answer is ${a2}`);
+  if (cA2.toUpperCase() === a2.toUpperCase()) {
+    score += 1;
+  }
+
+  console.log(`For question 3, you answered ${cA3}. The correct answer is ${a3}`);
+  if (cA3 === a3) {
+    score += 1;
+  }
+
+  console.log(`For question 4, you answered ${cA4}. The correct answer is ${a4}`);
+  if (cA4.toUpperCase() === a4.toUpperCase()) {
+    score += 1;
+  }
+
+  console.log(`For question 5, you answered ${cA5}. The correct answer is ${a5}`);
+  if (cA5 === a5) {
+    score += 1;
+  }
+
+  let grade = (score / 5) * 100;
+
+  if (grade >= 80){
+     console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<`);
+     console.log(`>>> Status: PASSED <<<`);
+  } else {
+     console.log(`>>> Overall Grade: ${grade}% (${score} of 5 responses correct) <<<`);
+     console.log(`>>> Status: FAILED <<<`);
+  }
   
-
-  return grade;
+  // console.log(score); // test
+  // console.log(`${candidateName}, you got a score of ${grade}%`); // test
+  return grade; // this never returns my grade?
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
+  console.log("Hello, " + candidateName);
   
   askQuestion();
   gradeQuiz(this.candidateAnswers);
